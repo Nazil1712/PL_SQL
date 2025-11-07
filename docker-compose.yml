@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  oracle-xe:
+    image: oracleinanutshell/oracle-xe-11g
+    container_name: oracle-xe
+    ports:
+      - "1521:1521" # Oracle listener port
+      - "8082:8080" # Optional HTTP port for Oracle (APEX)
+    environment:
+      - ORACLE_ALLOW_REMOTE=true # Allow remote connections (optional but useful)
+    restart: unless-stopped
+    volumes:
+      - oracle_data:/u01/app/oracle   # <--- Persistent volume added
+    healthcheck:
+      test: ["CMD", "tnsping", "XE"]
+      interval: 30s
+      retries: 5
+
+
+volumes:
+  oracle_data:   # Named volume definition
