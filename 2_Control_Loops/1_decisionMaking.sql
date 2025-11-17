@@ -34,7 +34,7 @@ BEGIN
 
 
     -- IF THEN ELSIF-THEN-ELSE Ladder
-    if num1 < num2 then
-        DBMS_OUTPUT.put_line
+    /* if num1 < num2 then
+        DBMS_OUTPUT.put_line */
 
 END;
